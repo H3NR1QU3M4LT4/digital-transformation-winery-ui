@@ -5,11 +5,11 @@ const Header = () => {
   const [isExpanded, toggleExpansion] = useState(false);
   const data = [
     {
-      path: '/',
+      path: '/wine_records',
       title: 'Wines Records',
     },
     {
-      path: '/',
+      path: '/vines_records',
       title: 'Vines Records',
     },
   ];
@@ -31,9 +31,8 @@ const Header = () => {
         </button>
 
         <nav
-          className={`${
-            isExpanded ? `block` : `hidden`
-          } md:block md:items-center w-full md:w-auto`}>
+          className={`${isExpanded ? `block` : `hidden`
+            } md:block md:items-center w-full md:w-auto`}>
           {data.map((link) => (
             <a
               className="block mt-4 text-black font-bold text-lg no-underline hover:underline hover:text-my-grey md:inline-block md:mt-0 md:ml-6"

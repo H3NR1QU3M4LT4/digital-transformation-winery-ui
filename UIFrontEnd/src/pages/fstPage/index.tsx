@@ -41,7 +41,7 @@ const FstPage = () => {
         <button type="button" onClick={setModalIsOpenToTrue}>
           Open
         </button>
-        <Modal modalIsOpen={modalIsOpen} setModalIsOpenToFalse={setModalIsOpenToFalse} />
+        {/*<Modal modalIsOpen={modalIsOpen} setModalIsOpenToFalse={setModalIsOpenToFalse} /> */}
       </div>
     </div>
   );

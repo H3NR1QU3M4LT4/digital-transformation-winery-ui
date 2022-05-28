@@ -1,22 +1,24 @@
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import CustomTable from '../../components/Table';
+import { get_sensor_wine_quality_records, IVines, IWineQuality } from '../../services/MLService'
 
 const WineQuality = () => {
   const location = useLocation();
-
   const { register, handleSubmit } = useForm();
+  const [tableData, setTableData] = useState<IVines[] | IWineQuality[] | undefined>([])
 
-  let dataMachineLearning;
+  useEffect(() => {
+    get_sensor_wine_quality_records().then((data) => setTableData(data))
+  }, []);
 
-  if (location.state) {
-    dataMachineLearning = location.state.response;
-    console.log(dataMachineLearning);
-  }
-
-  const onSubmit = (data) => {};
-
-  return <div className="container-fluid flex justify-center">Wine Quality</div>;
+  return (
+    <div>
+      <div className="container-fluid flex justify-center">Wine Quality</div>
+      <CustomTable tableData={tableData} typeO={"Wine"} />
+    </div>
+  );
 };
 
 export default WineQuality;

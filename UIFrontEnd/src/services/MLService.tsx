@@ -2,6 +2,7 @@ import axios from 'axios';
 import configData from '../configuration/config.json';
 
 export interface IWineQuality {
+  type: "Wine";
   fixed_acidity: number;
   volatile_acidity: number;
   citric_acid: number;
@@ -16,13 +17,14 @@ export interface IWineQuality {
 }
 
 export interface IVines {
-  temperatura: number;
-  humidade: number;
-  intensidade_chuva: number;
-  intervalo_chuva: number;
-  total_chuva: number;
-  velocidade_vento: number;
-  radiação_solar: number;
+  type: "Vine";
+  air_temperature: number;
+  humidity: number;
+  rain_intensity: number;
+  interval_rain: number;
+  total_rain: number;
+  wind_speed: number;
+  solar_radiation: number;
   sulfur_solo: number;
   ph_solo: number;
   sulphates_solo: number;
@@ -82,7 +84,7 @@ export const simple_post = async (data): Promise<IWineQuality | undefined> => {
   }
 };
 
-export const get_sensor_wine_quality_records = async () => {
+export const get_sensor_wine_quality_records = async (): Promise<IWineQuality[] | undefined> => {
   return await axios
     .get(`${configData.ML_API}/get_sensor_wine_quality_records`)
     .then((response) => {
@@ -91,7 +93,7 @@ export const get_sensor_wine_quality_records = async () => {
     });
 };
 
-export const get_sensor_vines_records = async () => {
+export const get_sensor_vines_records = async (): Promise<IVines[] | undefined> => {
   return await axios.get(`${configData.ML_API}/get_sensor_vines_records`).then((response) => {
     console.log(response);
     return response.data;
