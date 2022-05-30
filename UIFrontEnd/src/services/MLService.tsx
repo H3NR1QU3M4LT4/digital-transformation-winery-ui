@@ -31,14 +31,13 @@ export interface IVines {
   vine_zones: number;
 }
 
-export const predict_vines_quality = async (bodyFormData): Promise<IVines | undefined> => {
+export const predict_vines_quality = async (bodyFormData) => {
   let res = await axios({
     method: 'post',
     url: `${configData.ML_API}/predict_vines_quality`,
     data: bodyFormData,
     headers: {
-      'Content-Type': 'multipart/form-data',
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     },
   });
   if (res) {
@@ -48,14 +47,13 @@ export const predict_vines_quality = async (bodyFormData): Promise<IVines | unde
   }
 };
 
-export const predict_wine_quality = async (bodyFormData): Promise<IWineQuality | undefined> => {
+export const predict_wine_quality = async (bodyFormData) => {
   let res = await axios({
     method: 'post',
     url: `${configData.ML_API}/predict_wine_quality`,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Content-type': 'application/json',
     },
   });
   if (res) {

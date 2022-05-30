@@ -15,7 +15,8 @@ const WineQuality = () => {
 
   return (
     <div>
-      <div className="container-fluid flex justify-center">Wine Quality</div>
+      <p className='justify-center container-fluid flex pt-6 pb-2 font-primary text-2xl font-bold md:text-4xl text-gray-700'>Previsão da Qualidade do Vinho</p>
+      <p className='justify-center container-fluid flex pb-16 text-gray-600'>Com base na análise química</p>
       <CustomTable tableData={tableData} typeO={"Wine"} />
     </div>
   );
