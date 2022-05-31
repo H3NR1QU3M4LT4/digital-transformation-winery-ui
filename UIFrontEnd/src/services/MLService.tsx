@@ -53,7 +53,7 @@ export const predict_wine_quality = async (bodyFormData) => {
     url: `${configData.ML_API}/predict_wine_quality`,
     data: bodyFormData,
     headers: {
-      'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
     },
   });
   if (res) {
